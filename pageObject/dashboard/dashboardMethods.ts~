@@ -1,0 +1,23 @@
+import DashboardLocators from "./dashboardLocators";
+import {expect, Page} from "@playwright/test"
+
+export default class DashboardMethods extends DashboardLocators {
+
+  async goToDashboard(page: Page) {
+    await page.goto('/')
+    await expect(this.pageHeader(page)).toBeVisible()
+  }
+
+  async openAccountDropdown(page: Page) {
+    await this.accountButton(page).click()
+  }
+
+  async getLoginButton(page: Page) {
+    return this.loginButton(page)
+  }
+
+  async openLicensesPage(page: Page) {
+    await this.licensesButton(page).click()
+  }
+
+}
